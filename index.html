@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
   <title>Work Day Scheduler</title>
 </head>
 
@@ -17,12 +17,11 @@
   <header class="jumbotron">
     <h1 class="display-3">Work Day Scheduler</h1>
     <p class="lead">A simple calendar app for scheduling your work day</p>
-    <p id="currentDay" class="lead">i</p>
+    <p id="currentDay" class="lead"></p>
   </header>
   <div class="container">
-    <!-- Timeblocks go here -->
     <div class="row" id='6'>
-      <div class='col-2 hour'> 9am
+      <div class='col-2 hour'> 6am
       </div>
       <div class="col-8 form-group">
         <textarea class="form-control bg-transparent border-0" id="textArea6" name="text6"
@@ -35,10 +34,11 @@
       </div>
     </div>
   </div>
-  <script scr="moment.js"></script>
-  <script scr="script.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="script.js" type="text/javascript"></script>
+
 </body>
 
 </html>
