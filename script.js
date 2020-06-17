@@ -2,8 +2,9 @@ $(document).ready(function () {
     let currentDateEl = moment().format("MMMM Do YYYY, h:mm:ss a");
     // console.log("current", currentDateEl);
     $("#currentDay").text(currentDateEl);
-    let hourEl = moment().format('LT');
-    //console.log("hour", hourEl);
+    let checkTime = moment().format("HH");
+    //console.log("hour", checkTime);
+
     let workHours = [{
         id: "0",
         hour: "09",
@@ -69,6 +70,28 @@ $(document).ready(function () {
     },
     ];
 
+
+    function setInfo() {
+
+        localStorage.setItem("hourly", JSON.stringify(workHours));
+    }
+
+
+    function displayInfo() {
+
+        $.each(workHours, function (i, showInfo) {
+            $(showInfo.id).val(showInfo.info);
+        })
+    }
+    function init() {
+        let storedInfo = JSON.parse(localStorage.getItem("hourly"));
+        if (storedInfo) {
+            hourly = storedInfo;
+        }
+        setInfo();
+        displayInfo();
+    }
+
     $.each(workHours, function (i, currentHour) {
         let rowEl = $("<form>");
         rowEl.addClass("row");
@@ -76,7 +99,7 @@ $(document).ready(function () {
 
         let hourEl = $("<div>");
         hourEl.addClass("col-2 hour");
-        hourEl.text(currentHour.hour + currentHour.ante_post);
+        hourEl.text(currentHour.hour + ":00" + " " + currentHour.ante_post);
 
         let formEl = $("<div>");
         formEl.addClass("col-8 form-group")
@@ -88,12 +111,12 @@ $(document).ready(function () {
         let textAreaEl = $("<textarea>");
         plannerEl.append(textAreaEl);
         textAreaEl.attr("id", currentHour.id);
-        if (currentHour.time < moment().format("HH")) {
+        if (currentHour.time < checkTime) {
             textAreaEl.addClass("past");
-        } else if (currentHour.time === moment().format("HH")) {
+        } else if (currentHour.time === checkTime) {
             textAreaEl.addClass("present");
         } else {
-            currentHour.time > moment().format("HH");
+            currentHour.time > checkTime;
             textAreaEl.addClass("future");
         }
         let saveBttn = $("<i></i>");
@@ -103,8 +126,15 @@ $(document).ready(function () {
 
         savePlans.append(saveBttn);
         rowEl.append(hourEl, plannerEl, savePlans);
+    })
 
+    init();
 
+    $(".saveBtn").on("click", function (event) {
+        event.preventDefault();
+
+        setInfo();
+        displayInfo();
     })
 
 });
