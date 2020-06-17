@@ -10,63 +10,63 @@ $(document).ready(function () {
         hour: "09",
         time: "09",
         ante_post: "am",
-        info: ""
+        info: "",
     },
     {
         id: "1",
         hour: "10",
         time: "10",
         ante_post: "am",
-        info: ""
+        info: "",
     },
     {
         id: "2",
         hour: "11",
         time: "11",
         ante_post: "am",
-        info: ""
+        info: "",
     },
     {
         id: "3",
         hour: "12",
         time: "12",
         ante_post: "pm",
-        info: ""
+        info: "",
     },
     {
         id: "4",
         hour: "01",
         time: "13",
         ante_post: "pm",
-        info: ""
+        info: "",
     },
     {
         id: "5",
         hour: "02",
         time: "14",
         ante_post: "pm",
-        info: ""
+        info: "",
     },
     {
         id: "6",
         hour: "03",
         time: "15",
         ante_post: "pm",
-        info: ""
+        info: "",
     },
     {
         id: "7",
         hour: "04",
         time: "16",
         ante_post: "pm",
-        info: ""
+        info: "",
     },
     {
         id: "8",
         hour: "05",
         time: "17",
         ante_post: "pm",
-        info: ""
+        info: "",
     },
     ];
 
@@ -79,8 +79,11 @@ $(document).ready(function () {
 
     function displayInfo() {
 
-        $.each(workHours, function (i, showInfo) {
-            $(showInfo.id).val(showInfo.info);
+        // $.each(workHours, function (i, showInfo) {
+        //     $(showInfo.id).val(showInfo.info);
+        // })
+        workHours.forEach(function (perHour) {
+            $(`#${perHour.id}`).val(perHour.reminder);
         })
     }
     function init() {
@@ -132,11 +135,14 @@ $(document).ready(function () {
 
     $(".saveBtn").on("click", function (event) {
         event.preventDefault();
+        for (i = 0; i < workHours.length; i++) {
+            var textId = document.getElementById(i).value;
+            localStorage.hourly.info.val() = textId;
 
-        setInfo();
+        }
+        setInfo()
         displayInfo();
     })
-
 });
 
 
