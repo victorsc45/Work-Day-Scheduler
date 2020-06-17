@@ -4,50 +4,111 @@ $(document).ready(function () {
     $("#currentDay").text(currentDateEl);
     let hourEl = moment().format('LT');
     //console.log("hour", hourEl);
-    let numWrkHours = [1, 2, 3, 4, 5, 6, 7, 8];
-    // let rowEl = $(".row");
-    // let hourEl = $(".hour");
-    // let formEl = $(".form-group");
-    // let textAreaEl = $("textarea");
-    // let saveBtn = $(".saveBtn");
-    // let containDiv = $(".container");
-    $.each(numWrkHours, function (i, hour) {
-        let rowEl = $("<div>");
+    let workHours = [{
+        id: "0",
+        hour: "09",
+        time: "09",
+        ante_post: "am",
+        info: ""
+    },
+    {
+        id: "1",
+        hour: "10",
+        time: "10",
+        ante_post: "am",
+        info: ""
+    },
+    {
+        id: "2",
+        hour: "11",
+        time: "11",
+        ante_post: "am",
+        info: ""
+    },
+    {
+        id: "3",
+        hour: "12",
+        time: "12",
+        ante_post: "pm",
+        info: ""
+    },
+    {
+        id: "4",
+        hour: "01",
+        time: "13",
+        ante_post: "pm",
+        info: ""
+    },
+    {
+        id: "5",
+        hour: "02",
+        time: "14",
+        ante_post: "pm",
+        info: ""
+    },
+    {
+        id: "6",
+        hour: "03",
+        time: "15",
+        ante_post: "pm",
+        info: ""
+    },
+    {
+        id: "7",
+        hour: "04",
+        time: "16",
+        ante_post: "pm",
+        info: ""
+    },
+    {
+        id: "8",
+        hour: "05",
+        time: "17",
+        ante_post: "pm",
+        info: ""
+    },
+    ];
+
+    $.each(workHours, function (i, currentHour) {
+        let rowEl = $("<form>");
         rowEl.addClass("row");
-        rowEl.addId(hour);
+        $(".container").append(rowEl);
+
         let hourEl = $("<div>");
-        hourEl.addClass("hour col-2");
+        hourEl.addClass("col-2 hour");
+        hourEl.text(currentHour.hour + currentHour.ante_post);
+
         let formEl = $("<div>");
         formEl.addClass("col-8 form-group")
-        let textAreaEl = $("textarea");
-        textAreaEl.addClass("form-control bg-transparent border-0");
-        textAreaEl.addId("textarea" + [i]);
-        textAreaEl.name("textarea" + [i]);
-        textAreaEl.placeholder("Inpur you calander entries here");
-        textAreaEl.row("1");
-        let saveBtn = $("<div>");
-        saveBtn.addClass("col-2 saveBtn");
-        saveBtn.type("submit");
-        let bttn = ("<button>");
-        bttn.addClass("btn btn-primary mb-2");
-        bttn.text("save");
-        rowEl.append("<div>");
-        hourEl.append("<div>" + hour + "</div>");
-        formEl.append("<div>");
-        textAreaEl.append("textarea");
-        saveBtn.apppend("<div>");
 
-    });
+        let plannerEl = $("<div>");
+        plannerEl.addClass("col-8 description p-0");
+
+
+        let textAreaEl = $("<textarea>");
+        plannerEl.append(textAreaEl);
+        textAreaEl.attr("id", currentHour.id);
+        if (currentHour.time < moment().format("HH")) {
+            textAreaEl.addClass("past");
+        } else if (currentHour.time === moment().format("HH")) {
+            textAreaEl.addClass("present");
+        } else {
+            currentHour.time > moment().format("HH");
+            textAreaEl.addClass("future");
+        }
+        let saveBttn = $("<i></i>");
+        saveBttn.addClass("far fa-save fa-lg");
+        let savePlans = $("<button>");
+        savePlans.addClass("col-2 saveBtn");
+
+        savePlans.append(saveBttn);
+        rowEl.append(hourEl, plannerEl, savePlans);
+
+
+    })
 
 });
-// this will be a function that will append the container
-//function appendText() {
-  //  var txt1 = "<p>Text.</p>";        // Create text with HTML
-  // var txt2 = $("<p></p>").text("Text.");  // Create text with jQuery
-  //  var txt3 = document.createElement("p");
-  //  txt3.innerHTML = "Text.";         // Create text with DOM
-  //  $("body").append(txt1, txt2, txt3);   // Append new elements
- // }
+
 
 
 
