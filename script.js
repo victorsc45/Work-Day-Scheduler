@@ -79,11 +79,10 @@ $(document).ready(function () {
 
     function displayInfo() {
 
-        // $.each(workHours, function (i, showInfo) {
-        //     $(showInfo.id).val(showInfo.info);
-        // })
-        workHours.forEach(function (perHour) {
-            $(`#${perHour.id}`).val(perHour.reminder);
+        $.each(workHours.info, function (i, showInfo) {
+            textAreaEl.textcontent = (showInfo.id.attr([i]).value);
+
+
         })
     }
     function init() {
@@ -135,13 +134,34 @@ $(document).ready(function () {
 
     $(".saveBtn").on("click", function (event) {
         event.preventDefault();
-        for (i = 0; i < workHours.length; i++) {
-            var textId = document.getElementById(i).value;
-            localStorage.hourly.info.val() = textId;
+        event.stopImmediatePropagation();
+        if ($(".past") != "") {
+            let newId = $(this).siblings(".description").children(".past").attr("id");
+            let newText = $(this).siblings(".description").children(".past").val();
+            console.log(newText);
+            workHours[newId] = (window.localStorage.setItem('info', newText));
+
+
+        } else if ($(".present") != "") {
+            let newId = $(this).siblings(".description").children(".present").attr("id");
+            let newText = $(this).siblings(".description").children(".present").val();
+            console.log(newText);
+            workHours[newId] = (window.localStorage.setItem('info', newText));
+
+        } else if ($(".future") != "") {
+            let newId = $(this).siblings(".description").children(".future").attr("id");
+            let newText = $(this).siblings(".description").children(".future").val();
+            console.log(newText);
+            workHours[newId] = (window.localStorage.setItem('info', newText));
 
         }
+
+
+
+
         setInfo()
         displayInfo();
+
     })
 });
 
