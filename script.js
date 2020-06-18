@@ -1,9 +1,9 @@
 $(document).ready(function () {
+
     let currentDateEl = moment().format("MMMM Do YYYY, h:mm:ss a");
-    // console.log("current", currentDateEl);
     $("#currentDay").text(currentDateEl);
     let checkTime = moment().format("HH");
-    //console.log("hour", checkTime);
+
 
     let workHours = [{
         id: "0",
@@ -84,11 +84,8 @@ $(document).ready(function () {
 
     function displayInfo() {
 
-        $.each(workHours, function (i, elem) {
-            $("#" + elem.id).val(elem.info)
-            // textAreaEl.textcontent = (showInfo.id.attr([i]).value);
-
-
+        $.each(workHours, function (i, element) {
+            $("#" + element.id).val(element.info)
         })
     }
     function init() {
@@ -96,7 +93,7 @@ $(document).ready(function () {
         if (storedInfo) {
             hourly = storedInfo;
         }
-        //  setInfo();
+
         displayInfo();
     }
 
@@ -142,41 +139,19 @@ $(document).ready(function () {
 
     $(".saveBtn").on("click", function (event) {
         event.preventDefault();
-        console.log(this)
-        var text = $(this).siblings(".description").children().val()
-        var ids = $(this).siblings(".description").children().attr("id")
-        console.log(text, ids);
+        //console.log(this)
+        let text = $(this).siblings(".description").children().val()
+        let ids = $(this).siblings(".description").children().attr("id")
+        //console.log(text, ids);
 
         // loop the local storage
-        for (var i = 0; i < workHours.length; i++) {
+        for (let i = 0; i < workHours.length; i++) {
             if (workHours[i].id === ids) {
                 workHours[i].info = text;
                 localStorage.setItem("info", JSON.stringify(workHours))
             }
 
-        }        // //event.stopImmediatePropagation();
-        // if ($(".past") != "") {
-        //     let newId = $(this).siblings(".description").children(".past").attr("id");
-        //     let newText = $(this).siblings(".description").children(".past").val();
-        //     console.log(newText);
-        //     workHours[newId] = (window.localStorage.setItem('info', newText));
-
-
-        // } else if ($(".present") != "") {
-        //     let newId = $(this).siblings(".description").children(".present").attr("id");
-        //     let newText = $(this).siblings(".description").children(".present").val();
-        //     console.log(newText);
-        //     workHours[newId] = (window.localStorage.setItem('info', newText));
-
-        // } else if ($(".future") != "") {
-        //     let newId = $(this).siblings(".description").children(".future").attr("id");
-        //     let newText = $(this).siblings(".description").children(".future").val();
-        //     console.log(newText);
-        //     workHours[newId] = (window.localStorage.setItem('info', newText));
-
-        // }
-        // setInfo()
-        // displayInfo();
+        }
 
     })
 });
