@@ -70,17 +70,23 @@ $(document).ready(function () {
     },
     ];
 
+    var tempWorkHours = localStorage.getItem("info")
+    if (tempWorkHours) {
+        workHours = JSON.parse(localStorage.getItem("info"))
+    }
+
 
     function setInfo() {
 
-        localStorage.setItem("hourly", JSON.stringify(workHours));
+        localStorage.setItem("info", JSON.stringify(workHours));
     }
 
 
     function displayInfo() {
 
-        $.each(workHours.info, function (i, showInfo) {
-            textAreaEl.textcontent = (showInfo.id.attr([i]).value);
+        $.each(workHours, function (i, elem) {
+            $("#" + elem.id).val(elem.info)
+            // textAreaEl.textcontent = (showInfo.id.attr([i]).value);
 
 
         })
@@ -90,7 +96,7 @@ $(document).ready(function () {
         if (storedInfo) {
             hourly = storedInfo;
         }
-        setInfo();
+        //  setInfo();
         displayInfo();
     }
 
@@ -132,35 +138,45 @@ $(document).ready(function () {
 
     init();
 
+    // save just grab the ifno from the textare and save th info in the object into the array and then save the localsotrage
+
     $(".saveBtn").on("click", function (event) {
         event.preventDefault();
-        event.stopImmediatePropagation();
-        if ($(".past") != "") {
-            let newId = $(this).siblings(".description").children(".past").attr("id");
-            let newText = $(this).siblings(".description").children(".past").val();
-            console.log(newText);
-            workHours[newId] = (window.localStorage.setItem('info', newText));
+        console.log(this)
+        var text = $(this).siblings(".description").children().val()
+        var ids = $(this).siblings(".description").children().attr("id")
+        console.log(text, ids);
+
+        // loop the local storage
+        for (var i = 0; i < workHours.length; i++) {
+            if (workHours[i].id === ids) {
+                workHours[i].info = text;
+                localStorage.setItem("info", JSON.stringify(workHours))
+            }
+
+        }        // //event.stopImmediatePropagation();
+        // if ($(".past") != "") {
+        //     let newId = $(this).siblings(".description").children(".past").attr("id");
+        //     let newText = $(this).siblings(".description").children(".past").val();
+        //     console.log(newText);
+        //     workHours[newId] = (window.localStorage.setItem('info', newText));
 
 
-        } else if ($(".present") != "") {
-            let newId = $(this).siblings(".description").children(".present").attr("id");
-            let newText = $(this).siblings(".description").children(".present").val();
-            console.log(newText);
-            workHours[newId] = (window.localStorage.setItem('info', newText));
+        // } else if ($(".present") != "") {
+        //     let newId = $(this).siblings(".description").children(".present").attr("id");
+        //     let newText = $(this).siblings(".description").children(".present").val();
+        //     console.log(newText);
+        //     workHours[newId] = (window.localStorage.setItem('info', newText));
 
-        } else if ($(".future") != "") {
-            let newId = $(this).siblings(".description").children(".future").attr("id");
-            let newText = $(this).siblings(".description").children(".future").val();
-            console.log(newText);
-            workHours[newId] = (window.localStorage.setItem('info', newText));
+        // } else if ($(".future") != "") {
+        //     let newId = $(this).siblings(".description").children(".future").attr("id");
+        //     let newText = $(this).siblings(".description").children(".future").val();
+        //     console.log(newText);
+        //     workHours[newId] = (window.localStorage.setItem('info', newText));
 
-        }
-
-
-
-
-        setInfo()
-        displayInfo();
+        // }
+        // setInfo()
+        // displayInfo();
 
     })
 });
