@@ -1,16 +1,24 @@
-# 05 Third-Party APIs: Work Day Scheduler
+#  Work Day Scheduler
 
-Create a simple calendar application that allows the user to save events for each hour of the day. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+* Calander application that stores notations by the hour in a text area that can be saved
 
 
 
-## User Story
+# Description
 
-```
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-```
+* Using bootstrap, jQuery and dynamically updating the html view develop a work day scheduler
+* The current date and time is displayed at the top of the scheduler
+* The Work Day Scheduler will have the hours of the day on the home page with a text area and a save button 
+* The text area can be saved after input of daily schedule with the save button
+* The ability to delete text by selecting the text > deleting the text > and clicking the save button
+* If the user does not use the save button and the page is refreshed the enteries are not saved 
+* If the text entries are saved then the information will persist in local storage
+
+
+# This is an animation of the project and how it should look and function
+
+![day planner demo](./Assets/05-third-party-apis-homework-demo.gif)
+
 
 ## Acceptance Criteria
 
