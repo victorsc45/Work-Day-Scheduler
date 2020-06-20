@@ -23,13 +23,13 @@
 # Work Day Scheduler
 
 * Home page---
-* When the scheduler is opened the view is presented to the user with the current date and time at the top
-        * This functionality is through the jQuery and moment.js library to get the exact date and time
-        * The daily hours are displayed 9am - 5pm with a notation or text area for daily planning
-        * Each hour of the day is compared to current time from moment.js
-            * If the hour is past, present, or future (rest of the day ), the color style will change accordingly
+* When the scheduler is opened the view is presented to the user with the current date and time in the Jumbotron banner
+    * This functionality is developed with jQuery and the moment.js library to get the exact date and time
+    * The daily hours are displayed 9am - 5pm with a notation or text area for daily planning
+    * Each hour of the day is compared to current time from moment.js
+    * If the hour is past, present, or future, the color style will change accordingly
 * Type and save your daily activities for work (see Tests below)
-* Link to deploy the site: https://victorsc45.github.io/Work-Day-Scheduler/
+* Link to the deployed site: https://victorsc45.github.io/Work-Day-Scheduler/
 
 # Spec Criteria
 
