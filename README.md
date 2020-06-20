@@ -6,7 +6,7 @@
 
 # Description
 
-* Using bootstrap, jQuery and dynamically updating the html view develop a work day scheduler
+* Developed using bootstrap, jQuery and dynamically updating the html view of work day scheduler
 * The current date and time is displayed at the top of the scheduler
 * The Work Day Scheduler will have the hours of the day on the home page with a text area and a save button 
 * The text area can be saved after input of daily schedule with the save button
