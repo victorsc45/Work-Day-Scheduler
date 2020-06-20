@@ -3,13 +3,16 @@ $(document).ready(function () {
     //use moment.js to create variable for current day and time
 
     let currentDateEl = moment().format("MMMM Do YYYY, h:mm:ss a");
+
+    // display to the view date and time 
+
     $("#currentDay").text(currentDateEl);
 
     //set variable to compare past, present and future textarea color
 
     let checkTime = moment().format("HH");
 
-    //array of objects to pull for the JSON calls and set to local storage per each hour
+    //array of objects to pull for the JSON calls and set to local storage 
 
     let workHours = [{
         id: "0",
@@ -81,12 +84,6 @@ $(document).ready(function () {
     let tempWorkHours = localStorage.getItem("info")
     if (tempWorkHours) {
         workHours = JSON.parse(localStorage.getItem("info"))
-    }
-
-    // set the information in the textarea to local storage using JSON stringify of array
-
-    function setInfo() {
-        localStorage.setItem("info", JSON.stringify(workHours));
     }
 
     //display the information saved in the textarea using a loop through array 
@@ -178,7 +175,7 @@ $(document).ready(function () {
         let ids = $(this).siblings(".description").children().attr("id")
 
         // loop the local storage
-
+        // set the information in the textarea to local storage using JSON stringify of array
         for (let i = 0; i < workHours.length; i++) {
             if (workHours[i].id === ids) {
                 workHours[i].info = text;
