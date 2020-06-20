@@ -40,7 +40,7 @@
     * click into a timeblock and enter an event for the day
     * click the save button for that timeblock
     * the text for that event is saved in local storage or the deletion of an event is also stored
-    * refresh the page  the save events persist
+    * refresh the page the save events persist
 
 # Minimum Requirements
 * Work day Scheduler that accepts text input and saves to local storage 
@@ -58,7 +58,7 @@ N/A at this time simply follow the url provided above plan the day by saving ent
 
 # Review
 
-The current time and date must be displayed and the hours of the day time blocks must reflect different colors for hours past, present, and future.
+The current time and date are displayed and the hours of the day time blocks reflect different colors for hours past, present, and future.
 The DOM elements were created in jQuery on the js page of this application and the local storage is working correctly.
 
 # Credits 
